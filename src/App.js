@@ -217,9 +217,9 @@ function Game() {
 
 // eslint-disable-next-line no-unused-vars
 function calculateStatus(winner, squares, nextValue) {
-  return winner
+  return winner === "X" && winner === "O"
     ? `Winner: ${winner}`
-    : squares.every(Boolean)
+    : winner === "draw"
     ? `Scratch: Cat's game`
     : `Next player: ${nextValue}`;
 }
