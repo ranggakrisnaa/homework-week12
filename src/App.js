@@ -36,14 +36,14 @@ function Board() {
   function renderSquare(i) {
     let textColor = "";
     if (squares[i] === "X") {
-      textColor = "blue"; // Set the color for X
+      textColor = "blue";
     } else if (squares[i] === "O") {
-      textColor = "red"; // Set the color for O
+      textColor = "red";
     }
     return (
       <Button
-        width={"36"}
-        height={"36"}
+        width={{ base: "28", md: "40" }}
+        height={{ base: "28", md: "40" }}
         bg={"transparent"}
         onClick={() => selectSquare(i)}
       >
@@ -228,20 +228,25 @@ function Game() {
   );
   return (
     <Box bg={"tomato"}>
-      <Text textAlign={"Center"} fontWeight={"semibold"} fontSize={"6xl"}>
+      <Text
+        textAlign={"Center"}
+        fontWeight={"semibold"}
+        fontSize={"6xl"}
+        marginBottom={{ base: "24", md: "0" }}
+      >
         Tic-Tac-Toe Game
       </Text>
       <Flex
         alignItems={"center"}
         justifyContent={"center"}
-        flexDir={"row"}
+        flexDir={{ base: "column", md: "row" }}
         marginX={"auto"}
         paddingBottom={"10"}
         color={"white"}
-        width={"650px"}
+        width={{ md: "650px" }}
         height={"auto"}
       >
-        <Box flex={"1"} marginRight={"40"}>
+        <Box flex={"1"} marginRight={{ md: "40" }}>
           {playerXProfile}
         </Box>
         <Box
@@ -257,6 +262,7 @@ function Game() {
             <Flex
               justifyContent={"center"}
               alignItems={"center"}
+              flexWrap={"wrap"}
               marginBottom={"10"}
               gap={"20px"}
               fontSize={"2xl"}
@@ -290,38 +296,46 @@ function Game() {
               </Box>
             </Flex>
             <Board />
-            <Button
-              bgColor={"orange.400"}
-              _hover={{ bgColor: "orange.200" }}
-              width={"50"}
-              marginTop={"10"}
-              alignSelf={"flex-start"}
-              height={"16"}
-              onClick={() => dispatch(resetState())}
-              fontSize={"2xl"}
-              fontWeight={"semibold"}
-              boxShadow={"md"}
+            <Flex
+              justifyContent={"center"}
+              alignItems={"center"}
+              flexDirection={{ base: "column", md: "row" }}
             >
-              <RepeatIcon marginRight={"2"} /> reset game
-            </Button>
-            <Button
-              bgColor={"orange.400"}
-              _hover={{ bgColor: "orange.200" }}
-              width={"50"}
-              marginLeft={"10"}
-              marginTop={"10"}
-              alignSelf={"flex-start"}
-              height={"16"}
-              onClick={() => dispatch(resetWin())}
-              fontSize={"2xl"}
-              fontWeight={"semibold"}
-              boxShadow={"md"}
-            >
-              <RepeatIcon marginRight={"2"} /> reset winner
-            </Button>
+              <Button
+                bgColor={"orange.400"}
+                _hover={{ bgColor: "orange.200" }}
+                width={"50"}
+                marginTop={"10"}
+                height={"16"}
+                onClick={() => dispatch(resetState())}
+                fontSize={"2xl"}
+                fontWeight={"semibold"}
+                boxShadow={"md"}
+              >
+                <RepeatIcon marginRight={"2"} /> reset game
+              </Button>
+              <Button
+                bgColor={"orange.400"}
+                _hover={{ bgColor: "orange.200" }}
+                width={"50"}
+                marginLeft={{ md: "10" }}
+                marginTop={"10"}
+                height={"16"}
+                onClick={() => dispatch(resetWin())}
+                fontSize={"2xl"}
+                fontWeight={"semibold"}
+                boxShadow={"md"}
+              >
+                <RepeatIcon marginRight={"2"} /> reset winner
+              </Button>
+            </Flex>
           </Box>
         </Box>
-        <Box flex={"1"} marginLeft={"40"}>
+        <Box
+          flex={"1"}
+          marginTop={{ base: "24", md: "0" }}
+          marginLeft={{ md: "40" }}
+        >
           {playerOProfile}
         </Box>
       </Flex>
